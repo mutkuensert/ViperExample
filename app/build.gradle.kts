@@ -6,11 +6,11 @@ plugins {
 }
 
 android {
-    namespace = "com.mutkuensert.mvpexample"
+    namespace = "com.mutkuensert.viperexample"
     compileSdk = 34
 
     defaultConfig {
-        applicationId = "com.mutkuensert.mvpexample"
+        applicationId = "com.mutkuensert.viperexample"
         minSdk = 24
         targetSdk = 34
         versionCode = 1

@@ -1,4 +1,4 @@
-package com.mutkuensert.mvpexample
+package com.mutkuensert.viperexample
 
 import org.junit.Test
 

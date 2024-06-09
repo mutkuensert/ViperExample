@@ -19,5 +19,5 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "MvpExample"
+rootProject.name = "ViperExample"
 include(":app")

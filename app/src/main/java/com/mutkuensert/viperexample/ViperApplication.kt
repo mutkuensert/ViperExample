@@ -1,7 +1,7 @@
-package com.mutkuensert.mvpexample
+package com.mutkuensert.viperexample
 
 import android.app.Application
 import dagger.hilt.android.HiltAndroidApp
 
 @HiltAndroidApp
-class MvpApplication : Application()
+class ViperApplication : Application()
