@@ -26,7 +26,7 @@ interface PopularMoviesContract {
 
     interface Router {
         @Serializable
-        object PopularMovies
+        object PopularMoviesRoute
 
         fun navigateToMovieDetail(id: Int)
     }

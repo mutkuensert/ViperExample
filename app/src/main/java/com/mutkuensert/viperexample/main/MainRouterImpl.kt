@@ -10,9 +10,9 @@ import javax.inject.Inject
 class MainRouterImpl @Inject constructor() : MainContract.Router {
     override fun createNavGraph(navController: NavController) {
         navController.graph = navController.createGraph(
-            startDestination = PopularMoviesContract.Router.PopularMovies
+            startDestination = PopularMoviesContract.Router.PopularMoviesRoute
         ) {
-            fragment<PopularMoviesFragment, PopularMoviesContract.Router.PopularMovies>()
+            fragment<PopularMoviesFragment, PopularMoviesContract.Router.PopularMoviesRoute>()
         }
     }
 }
