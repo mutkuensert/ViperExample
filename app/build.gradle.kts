@@ -67,6 +67,9 @@ dependencies {
     implementation(libs.retrofit)
     implementation(libs.retrofit.kotlin.serialization)
     implementation(libs.okhttp)
+    implementation(libs.okhttp.logging.interceptor)
+
+    implementation(libs.coil)
 }
 
 kapt {

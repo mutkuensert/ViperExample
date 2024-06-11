@@ -1,6 +1,7 @@
 package com.mutkuensert.viperexample.popularmovies
 
 import com.github.michaelbull.result.Result
+import kotlinx.coroutines.CoroutineScope
 import kotlinx.serialization.Serializable
 
 interface PopularMoviesContract {
@@ -15,13 +16,15 @@ interface PopularMoviesContract {
 
         fun bindView(view: View)
 
+        fun setScope(scope: CoroutineScope)
+
         fun unbindView()
 
         fun onClickMovie(id: Int)
     }
 
     interface Interactor {
-        fun getMovies(): Result<List<Movie>, Exception>
+        suspend fun getMovies(): Result<List<Movie>, Exception>
     }
 
     interface Router {

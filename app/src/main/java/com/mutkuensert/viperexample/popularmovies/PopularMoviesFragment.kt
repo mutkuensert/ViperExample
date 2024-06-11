@@ -5,6 +5,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.lifecycleScope
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.mutkuensert.viperexample.R
 import com.mutkuensert.viperexample.databinding.FragmentPopularMoviesBinding
 import dagger.hilt.android.AndroidEntryPoint
@@ -25,6 +28,8 @@ class PopularMoviesFragment
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
+        presenter.bindView(this)
+        presenter.setScope(lifecycleScope)
         _binding = FragmentPopularMoviesBinding.inflate(inflater, container, false)
         val view = binding.root
         presenter.onCreateView()
@@ -38,14 +43,18 @@ class PopularMoviesFragment
     }
 
     override fun showLoading() {
-        // ...
+        binding.progressBar.visibility = View.VISIBLE
     }
 
     override fun hideLoading() {
-        // ...
+        binding.progressBar.visibility = View.GONE
     }
 
     override fun showMovies(movies: List<Movie>) {
-        // ...
+        val adapter = PopularMoviesAdapter(movies)
+
+        val recyclerView: RecyclerView = binding.recyclerView
+        recyclerView.layoutManager = LinearLayoutManager(context)
+        recyclerView.adapter = adapter
     }
 }
