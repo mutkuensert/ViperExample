@@ -7,7 +7,7 @@ import com.mutkuensert.viperexample.popularmovies.PopularMoviesContract
 import com.mutkuensert.viperexample.popularmovies.PopularMoviesFragment
 import javax.inject.Inject
 
-class MainRouterImpl @Inject constructor() : MainContract.Router {
+class MainRouter @Inject constructor() : MainContract.Router {
     override fun createNavGraph(navController: NavController) {
         navController.graph = navController.createGraph(
             startDestination = PopularMoviesContract.Router.PopularMoviesRoute

@@ -10,8 +10,8 @@ import dagger.hilt.components.SingletonComponent
 interface MainModule {
 
     @Binds
-    fun bindMainPresenter(presenter: MainPresenterImpl): MainContract.Presenter
+    fun bindMainPresenter(presenter: MainPresenter): MainContract.Presenter
 
     @Binds
-    fun bindMainRouter(router: MainRouterImpl): MainContract.Router
+    fun bindMainRouter(router: MainRouter): MainContract.Router
 }

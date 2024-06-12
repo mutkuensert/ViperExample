@@ -6,7 +6,7 @@ import com.mutkuensert.viperexample.popularmovies.Movie
 import com.mutkuensert.viperexample.popularmovies.PopularMoviesContract
 import javax.inject.Inject
 
-class PopularMoviesInteractorImpl @Inject constructor(
+class PopularMoviesInteractor @Inject constructor(
     private val service: PopularMoviesService
 ) : PopularMoviesContract.Interactor {
     override suspend fun getMovies(): Result<List<Movie>, Exception> {

@@ -8,7 +8,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
-class PopularMoviesPresenterImpl @Inject constructor(
+class PopularMoviesPresenter @Inject constructor(
     private val interactor: PopularMoviesContract.Interactor,
     private val router: PopularMoviesContract.Router,
 ) : PopularMoviesContract.Presenter {
