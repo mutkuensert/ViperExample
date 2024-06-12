@@ -1,5 +1,6 @@
 package com.mutkuensert.viperexample.popularmovies
 
+import androidx.navigation.NavController
 import com.github.michaelbull.result.onFailure
 import com.github.michaelbull.result.onSuccess
 import javax.inject.Inject
@@ -14,9 +15,11 @@ class PopularMoviesPresenter @Inject constructor(
 ) : PopularMoviesContract.Presenter {
     private var view: PopularMoviesContract.View? = null
     private var scope: CoroutineScope? = null
+    private var navController: NavController? = null
 
     override fun onCreateView() {
         view?.showLoading()
+
         scope?.launch(Dispatchers.IO) {
             interactor.getMovies().onSuccess {
                 withContext(Dispatchers.Main) {
@@ -37,11 +40,15 @@ class PopularMoviesPresenter @Inject constructor(
         this.scope = scope
     }
 
+    override fun setNavController(navController: NavController) {
+        this.navController = navController
+    }
+
     override fun unbindView() {
         this.view = null
     }
 
     override fun onClickMovie(id: Int) {
-        router.navigateToMovieDetail(id)
+        router.navigateToMovieDetail(navController!!, id)
     }
 }

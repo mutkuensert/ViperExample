@@ -1,4 +1,4 @@
-package com.mutkuensert.viperexample.popularmovies.data
+package com.mutkuensert.viperexample.core.data.service
 
 import com.mutkuensert.viperexample.core.data.ImageUtils
 import com.mutkuensert.viperexample.popularmovies.Movie

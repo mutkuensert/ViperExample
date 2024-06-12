@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.mutkuensert.viperexample.R
@@ -30,6 +31,7 @@ class PopularMoviesFragment
     ): View {
         presenter.bindView(this)
         presenter.setScope(lifecycleScope)
+        presenter.setNavController(findNavController())
         _binding = FragmentPopularMoviesBinding.inflate(inflater, container, false)
         val view = binding.root
         presenter.onCreateView()
@@ -51,7 +53,7 @@ class PopularMoviesFragment
     }
 
     override fun showMovies(movies: List<Movie>) {
-        val adapter = PopularMoviesAdapter(movies)
+        val adapter = PopularMoviesAdapter(movies, onClickMovie = presenter::onClickMovie)
 
         val recyclerView: RecyclerView = binding.recyclerView
         recyclerView.layoutManager = LinearLayoutManager(context)

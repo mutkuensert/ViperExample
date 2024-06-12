@@ -7,7 +7,10 @@ import androidx.recyclerview.widget.RecyclerView
 import coil.load
 import com.mutkuensert.viperexample.databinding.MovieColumnItemBinding
 
-class PopularMoviesAdapter(private val movies: List<Movie>) :
+class PopularMoviesAdapter(
+    private val movies: List<Movie>,
+    private val onClickMovie: (id: Int) -> Unit,
+) :
     RecyclerView.Adapter<PopularMoviesAdapter.ViewHolder>() {
     class ViewHolder(val binding: MovieColumnItemBinding) : RecyclerView.ViewHolder(binding.root)
 
@@ -20,6 +23,7 @@ class PopularMoviesAdapter(private val movies: List<Movie>) :
     override fun onBindViewHolder(viewHolder: ViewHolder, position: Int) {
         val movie = movies[position]
         val binding = viewHolder.binding
+        binding.setItemClickListener(movie.id)
         binding.movieName.text = movie.title
 
         binding.showProgressBar()
@@ -30,6 +34,12 @@ class PopularMoviesAdapter(private val movies: List<Movie>) :
             }, onError = { _, _ ->
                 binding.hideProgressBar()
             })
+        }
+    }
+
+    private fun MovieColumnItemBinding.setItemClickListener(id: Int) {
+        root.setOnClickListener {
+            onClickMovie(id)
         }
     }
 

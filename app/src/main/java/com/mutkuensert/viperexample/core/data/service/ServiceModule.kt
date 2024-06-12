@@ -1,4 +1,4 @@
-package com.mutkuensert.viperexample.popularmovies.data
+package com.mutkuensert.viperexample.core.data.service
 
 import dagger.Module
 import dagger.Provides
@@ -11,7 +11,7 @@ import retrofit2.Retrofit
 object ServiceModule {
 
     @Provides
-    fun providePopularMoviesService(retrofit: Retrofit): PopularMoviesService {
-        return retrofit.create(PopularMoviesService::class.java)
+    fun providePopularMoviesService(retrofit: Retrofit): MovieService {
+        return retrofit.create(MovieService::class.java)
     }
 }

@@ -1,5 +1,6 @@
 package com.mutkuensert.viperexample.popularmovies
 
+import androidx.navigation.NavController
 import com.github.michaelbull.result.Result
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.serialization.Serializable
@@ -18,6 +19,8 @@ interface PopularMoviesContract {
 
         fun setScope(scope: CoroutineScope)
 
+        fun setNavController(navController: NavController)
+
         fun unbindView()
 
         fun onClickMovie(id: Int)
@@ -31,6 +34,6 @@ interface PopularMoviesContract {
         @Serializable
         object PopularMoviesRoute
 
-        fun navigateToMovieDetail(id: Int)
+        fun navigateToMovieDetail(navController: NavController, id: Int)
     }
 }

@@ -1,6 +1,5 @@
 package com.mutkuensert.viperexample.popularmovies
 
-import com.mutkuensert.viperexample.popularmovies.data.PopularMoviesInteractor
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn
