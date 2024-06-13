@@ -1,10 +1,7 @@
 package com.mutkuensert.viperexample.moviedetail
 
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentActivity
-import androidx.navigation.NavController
 import com.github.michaelbull.result.Result
-import kotlinx.coroutines.CoroutineScope
 import kotlinx.serialization.Serializable
 
 interface MovieDetailContract {
@@ -15,19 +12,13 @@ interface MovieDetailContract {
     }
 
     interface Presenter {
-        fun onCreateView(movieId: Int)
-
-        fun bindView(view: View)
-
-        fun setScope(scope: CoroutineScope)
-
-        fun unbindView()
-
-        fun setNavigateBack(
-            fragmentActivity: FragmentActivity,
-            lifecycleOwner: Fragment,
-            navController: NavController
+        fun onCreateView(
+            movieId: Int,
+            view: View,
+            fragment: Fragment
         )
+
+        fun unbind()
     }
 
     interface Interactor {
@@ -38,10 +29,6 @@ interface MovieDetailContract {
         @Serializable
         class MovieDetailRoute(val id: Int)
 
-        fun setNavigateBack(
-            fragmentActivity: FragmentActivity,
-            lifecycleOwner: Fragment,
-            navController: NavController
-        )
+        fun setNavigateBack(fragment: Fragment)
     }
 }

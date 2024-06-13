@@ -1,8 +1,7 @@
 package com.mutkuensert.viperexample.moviedetail
 
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentActivity
-import androidx.navigation.NavController
+import androidx.lifecycle.lifecycleScope
 import com.github.michaelbull.result.onFailure
 import com.github.michaelbull.result.onSuccess
 import javax.inject.Inject
@@ -17,40 +16,40 @@ class MovieDetailPresenter @Inject constructor(
 ) : MovieDetailContract.Presenter {
     private var view: MovieDetailContract.View? = null
     private var scope: CoroutineScope? = null
-    override fun onCreateView(movieId: Int) {
-        view?.showLoading()
+    override fun onCreateView(
+        movieId: Int,
+        view: MovieDetailContract.View,
+        fragment: Fragment
+    ) {
+        this.view = view
+        this.scope = fragment.lifecycleScope
+        setNavigateBack(fragment)
+        getMovie(movieId)
+    }
 
-        scope?.launch(Dispatchers.IO) {
+    private fun getMovie(movieId: Int) {
+        view!!.showLoading()
+
+        scope!!.launch(Dispatchers.IO) {
             interactor.getMovie(movieId).onSuccess {
                 withContext(Dispatchers.Main) {
-                    view?.hideLoading()
-                    view?.showMovie(it)
+                    view!!.hideLoading()
+                    view!!.showMovie(it)
                 }
             }.onFailure {
                 withContext(Dispatchers.Main) {
-                    view?.hideLoading()
+                    view!!.hideLoading()
                 }
             }
         }
     }
 
-    override fun bindView(view: MovieDetailContract.View) {
-        this.view = view
-    }
-
-    override fun setScope(scope: CoroutineScope) {
-        this.scope = scope
-    }
-
-    override fun unbindView() {
+    override fun unbind() {
         view = null
+        scope = null
     }
 
-    override fun setNavigateBack(
-        fragmentActivity: FragmentActivity,
-        lifecycleOwner: Fragment,
-        navController: NavController
-    ) {
-        router.setNavigateBack(fragmentActivity, lifecycleOwner, navController)
+    private fun setNavigateBack(fragment: Fragment) {
+        router.setNavigateBack(fragment)
     }
 }

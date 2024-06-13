@@ -1,8 +1,8 @@
 package com.mutkuensert.viperexample.popularmovies
 
+import androidx.fragment.app.Fragment
 import androidx.navigation.NavController
 import com.github.michaelbull.result.Result
-import kotlinx.coroutines.CoroutineScope
 import kotlinx.serialization.Serializable
 
 interface PopularMoviesContract {
@@ -13,15 +13,9 @@ interface PopularMoviesContract {
     }
 
     interface Presenter {
-        fun onCreateView()
+        fun onCreateView(view: View, fragment: Fragment)
 
-        fun bindView(view: View)
-
-        fun setScope(scope: CoroutineScope)
-
-        fun setNavController(navController: NavController)
-
-        fun unbindView()
+        fun unbind()
 
         fun onClickMovie(id: Int)
     }

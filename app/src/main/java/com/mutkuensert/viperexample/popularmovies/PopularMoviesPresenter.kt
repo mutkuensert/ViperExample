@@ -1,6 +1,9 @@
 package com.mutkuensert.viperexample.popularmovies
 
+import androidx.fragment.app.Fragment
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.NavController
+import androidx.navigation.fragment.findNavController
 import com.github.michaelbull.result.onFailure
 import com.github.michaelbull.result.onSuccess
 import javax.inject.Inject
@@ -17,35 +20,33 @@ class PopularMoviesPresenter @Inject constructor(
     private var scope: CoroutineScope? = null
     private var navController: NavController? = null
 
-    override fun onCreateView() {
-        view?.showLoading()
+    override fun onCreateView(view: PopularMoviesContract.View, fragment: Fragment) {
+        this.view = view
+        this.scope = fragment.lifecycleScope
+        this.navController = fragment.findNavController()
 
-        scope?.launch(Dispatchers.IO) {
+        getMovies()
+    }
+
+    private fun getMovies() {
+        view!!.showLoading()
+
+        scope!!.launch(Dispatchers.IO) {
             interactor.getMovies().onSuccess {
                 withContext(Dispatchers.Main) {
-                    view?.hideLoading()
-                    view?.showMovies(it)
+                    view!!.hideLoading()
+                    view!!.showMovies(it)
                 }
             }.onFailure {
-                withContext(Dispatchers.Main) { view?.hideLoading() }
+                withContext(Dispatchers.Main) { view!!.hideLoading() }
             }
         }
     }
 
-    override fun bindView(view: PopularMoviesContract.View) {
-        this.view = view
-    }
-
-    override fun setScope(scope: CoroutineScope) {
-        this.scope = scope
-    }
-
-    override fun setNavController(navController: NavController) {
-        this.navController = navController
-    }
-
-    override fun unbindView() {
-        this.view = null
+    override fun unbind() {
+        view = null
+        scope = null
+        navController = null
     }
 
     override fun onClickMovie(id: Int) {

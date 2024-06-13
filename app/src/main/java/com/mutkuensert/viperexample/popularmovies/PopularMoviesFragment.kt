@@ -5,8 +5,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.lifecycleScope
-import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.mutkuensert.viperexample.R
@@ -29,19 +27,16 @@ class PopularMoviesFragment
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        presenter.bindView(this)
-        presenter.setScope(lifecycleScope)
-        presenter.setNavController(findNavController())
         _binding = FragmentPopularMoviesBinding.inflate(inflater, container, false)
+        presenter.onCreateView(this, this)
         val view = binding.root
-        presenter.onCreateView()
         return view
     }
 
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
-        presenter.unbindView()
+        presenter.unbind()
     }
 
     override fun showLoading() {
