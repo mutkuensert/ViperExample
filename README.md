@@ -57,7 +57,7 @@ The component that binds view and interactor.
 #### Entity
 Data models used in interactor.
 #### Router
-The component configures and handles vnavigation logic.
+The component configures and handles navigation logic.
 
 ### Advantages
 #### Modular Structure
