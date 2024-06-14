@@ -9,6 +9,8 @@
 ## About The Project
 This is a simple application with popular movies and movie detail screen utilizes Viper architecture.
 
+https://github.com/mutkuensert/ViperExample/assets/97624869/689b868d-0c98-4718-b245-673c07b85b26
+
 ## Configuration
 To be able to run the application, a TMDB api key should be set as environment variable as ``API_KEY_TMDB = your_api_key``
 
