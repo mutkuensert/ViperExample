@@ -45,7 +45,7 @@ classDiagram
     View <|-- Fragment
 ```
 
-VIPER stands for View, Interactor, Presenter, Entity, and Router. It primarily used in IOS development but it can be applied to other platforms as I did in the project. The main idea of this architecture is seperation of concerns as it divides responsibilities into different componens.
+VIPER stands for View, Interactor, Presenter, Entity, and Router. It is primarily used in IOS development but it can be applied to other platforms as I did in the project. The main idea of this architecture is seperation of concerns as it divides responsibilities into different componens.
 #### View
 This component configures ui logic and handled by presenter.
 #### Interactor
