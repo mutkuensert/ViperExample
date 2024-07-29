@@ -61,7 +61,7 @@ The component configures and handles navigation logic.
 
 ### Advantages
 #### Modular Structure
-Viper’s separated components enable maintaining the project easier. As each component has its own responsibility, making changes without conflicts with other developments are easier.
+Viper’s separated components enable maintaining the project easier if responsibilities of components aren't violated. As each component has its own responsibility, making changes without conflicts with other developments are easier.
 #### Testability
 Separated components enable easier unit testing. Each module can be tested in isolation.
 #### Scalability
@@ -71,7 +71,7 @@ Developers work on their own module. Updating the application becomes simpler.
 
 ### Disadvantages
 #### Complex structure
-Compared to other architectures, Viper has more components. It causes more boilerplate codes and files. It is harder to understant for beginners. This architecture might not used for small projects.
+Compared to other architectures, Viper has more components. It causes much more boilerplate codes and files. It is harder to understant for beginners. This architecture might not used for small projects.
 #### Learning curve
 For beginners or developers new to Viper, the learning step might be longer. Understanding the interactions between components might take time.
 #### Duplication
